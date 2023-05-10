@@ -32,27 +32,27 @@ export AWS_SECRET_ACCESS_KEY=
 
 export VERSION=2.4
 
-docker build -t pydata-seattle:${VERSION} -f Dockerfile .
+docker build -t anomaly-detection:${VERSION} -f Dockerfile .
 
-docker tag pydata-seattle:${VERSION} anindyas/pydata-seattle:${VERSION}
+docker tag anomaly-detection:${VERSION} prabhakarrajeev/anomaly-detection:${VERSION}
 
-docker push anindyas/pydata-seattle:${VERSION}
+docker push prabhakarrajeev/anomaly-detection:${VERSION}
 
 
 docker system prune --all
 
-docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work pydata-seattle:${VERSION}
+docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work anomaly-detection:${VERSION}
 
-docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work anindyas/pydata-seattle:${VERSION}
+docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work prabhakarrajeev/anomaly-detection:${VERSION}
 
-docker run -it --env GRANT_SUDO=yes --user root --rm -p 8888:8888 pydata-seattle:${VERSION}
+docker run -it --env GRANT_SUDO=yes --user root --rm -p 8888:8888 anomaly-detection:${VERSION}
 
-docker run -it --env GRANT_SUDO=yes --user root --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work pydata-seattle:${VERSION}
+docker run -it --env GRANT_SUDO=yes --user root --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work anomaly-detection:${VERSION}
 
-#docker run -it --env GRANT_SUDO=yes --user root --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work pydata-seattle:${VERSION}
+#docker run -it --env GRANT_SUDO=yes --user root --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work anomaly-detection:${VERSION}
 
 # for runing with ray
-#docker run -it --shm-size=10gb --env GRANT_SUDO=yes --user root --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --rm -p 8888:8888 -p 8265:8265 -v "${PWD}":/home/jovyan/work pydata-seattle:${VERSION}
+#docker run -it --shm-size=10gb --env GRANT_SUDO=yes --user root --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --rm -p 8888:8888 -p 8265:8265 -v "${PWD}":/home/jovyan/work anomaly-detection:${VERSION}
 
 ```
 
